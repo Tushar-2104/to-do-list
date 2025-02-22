@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *,
+        *:before,
+        *:after{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            overflow: hidden;
+            /* background: #066acd; */
+        }
+       
+        img{
+            width: 100%;
+            height: 100vh; 
+    
+        }
+        .box{
+            width: 40%;
+            top: 50%;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.726);
+            border-radius: 10px;
+            min-width: 450px;
+            position: absolute;
+            min-height: 100px;
+            transform: translate(-50%,-50%);
+        }
+        #nt{
+            position: relative;
+            padding: 30px 20px;
+        }
+        #nt input{
+            width: 75%;
+            height: 45px;
+            padding: 12px;
+            color: #111111;
+            font-weight: 500;
+            position: relative;
+            border-radius: 5px;
+            font-family: 'Poppins',sans-serif;
+            font-size: 15px;
+            border: 2px solid #d1d3d4;
+        }
+
+        #nt input:focus{
+            outline: none;
+            border-color: #0d75ec;
+        }
+        #nt button{
+            position: relative;
+            float: right;
+            font-weight: 500;
+            font-size: 16px;
+            background-color: #65e5cb;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            outline: none;
+            width: 20%;
+            height: 45px;
+            border-radius: 5px;
+            font-family: 'Poppins',sans-serif;
+        }
+        #tasks{
+            border-radius: 10px;
+            width: 100%;
+            position: relative;
+            background-color:rgba(255, 255, 255, 0.16);
+            padding: 30px 20px;
+            margin-top: 10px;
+        }
+
+        .task{
+            border-radius: 5px;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #939697;
+            cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            height: 50px;
+            margin-bottom: 8px;
+            padding: 5px 10px;
+            display: flex;
+        }
+        .task span{
+            font-family: 'Poppins',sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        .task button{
+            background-color: #5fe5c8;
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+            outline: none;
+            height: 100%;
+            width: 40px;
+            border-radius: 5px;
+        }
+        #to{
+            font-size: xx-large;
+            color: aliceblue;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            animation-name: to;
+            animation-duration: 2s;
+            margin-top: -700px;
+            margin-left: 700px;
+
+        }
+        @keyframes to {
+            0%{
+                margin-top: -800px;
+                opacity:30% ;
+            }
+            100%{
+                margin-top: -700px;
+                opacity: 100%;
+            }
+        }
+        #w{
+            margin-top: 600px;
+            margin-left:650px ;
+            position: absolute;
+            font-size: x-large;
+            color: rgba(240, 248, 255, 0.738);
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div id="img"> <img src="https://wallpaperaccess.com/full/24866.jpg" alt=""></div>
+    <div id="to">
+        <b>TODO List</b>
+    
+    </div>
+
+    
+    <div class="box">
+        
+        
+        <div id="nt">
+            <input type="text" placeholder="Add Tasks">
+            <button id="push">Add</button>
+        </div>
+        <div id="tasks"></div>
+    </div>
+    <div id="w">
+        social media:
+        <a href="https://www.youtube.com/watch?v=AzV3EA-1-yM" style="color: white;"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.fitness" style="color: white;"><i class="fa-solid fa-heart"></i></a>
+    </div>
+    
+    <script>
+        document.querySelector('#push').onclick = function(){
+    if(document.querySelector('#nt input').value.length == 0){
+        alert("Kindly Enter Task Name!!!!")
+    }
+
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#nt input').value}
+                </span>
+                <button class="delete">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
+}
+    </script>
+</body>
+</html>
